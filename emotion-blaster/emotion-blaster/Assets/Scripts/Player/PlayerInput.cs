@@ -7,16 +7,22 @@ public class PlayerInput : MonoBehaviour
 	public float acceleration;
 	public float jumpForce;
 	public bool grounded;
+	public Direction facing;
 	
 	void Update ()
 	{
 		Movement ();
-		// Firing ();
+		Firing ();
 	}
 	
 	void Movement ()
 	{	
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), 0);
+		if (input.x > 0) {
+			facing = Direction.RIGHT;
+		} else if(input.x < 0) {
+			facing = Direction.LEFT;
+		}
 		gameObject.GetComponent<Rigidbody2D> ().AddForce (input * acceleration);
 
 		if (Input.GetButtonDown ("Jump")) {

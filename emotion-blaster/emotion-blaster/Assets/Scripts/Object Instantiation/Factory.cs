@@ -4,6 +4,7 @@ using System.Collections;
 public class Factory : MonoBehaviour
 {
 	public GameObject player;
+	public GameObject playerBullet;
 
 	//Here is a private reference only this class can access
 	private static Factory _instance;
@@ -29,5 +30,9 @@ public class Factory : MonoBehaviour
 	public GameObject ByReference (GameObject gameObject, Vector2 position, Quaternion rotation)
 	{
 		return InitializeParameters (ObjectPool.pool.Pull (gameObject, position, rotation));
+	}
+
+	public GameObject PlayerBullet (Vector2 position, Quaternion rotation) {
+		return InitializeParameters (ObjectPool.pool.Pull (playerBullet, position, rotation));
 	}
 }
