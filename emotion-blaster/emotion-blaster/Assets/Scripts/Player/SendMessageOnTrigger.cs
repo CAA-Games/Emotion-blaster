@@ -10,14 +10,14 @@ public class SendMessageOnTrigger : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D coll)
 	{
-		if (coll.tag.Equals (triggerTargetTag)) {
+		if (messageOnEnter.Length > 0 && (coll.tag.Equals (triggerTargetTag) || triggerTargetTag.Length == 0)) {
 			gameObject.SendMessageUpwards (messageOnEnter);
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D coll)
 	{
-		if (coll.tag.Equals (triggerTargetTag)) {
+		if (messageOnExit.Length > 0 && (coll.tag.Equals (triggerTargetTag) || triggerTargetTag.Length == 0)) {
 			gameObject.SendMessageUpwards (messageOnExit);
 		}
 	}
